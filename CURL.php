@@ -1,20 +1,26 @@
 <?php
 
-// cURL Functions not yet supported:
-// - curl_multi_add_handle
-// - curl_multi_close
-// - curl_multi_exec
-// - curl_multi_getcontent
-// - curl_multi_info_read
-// - curl_multi_init
-// - curl_multi_remove_handle
-// - curl_multi_select
+//    Copyright (C) 2011 BauerUK
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
-* @param string Version
-* @param int ErrNo
-* @param string Error
-*/
+ * 
+ * @param string Version
+ * @param int ErrNo
+ * @param string Error
+ */
 class CURL {
 
     private $http200Aliases = array();
