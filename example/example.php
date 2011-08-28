@@ -15,5 +15,8 @@
             ->setReturnTransfer(TRUE)
             ->execute();
     
-    print $headers;
+    print $headers . "\n";
     
+    
+    // Example 3. Using the `->get...` functions
+    print $curl->getHTTPCode() . "\n";

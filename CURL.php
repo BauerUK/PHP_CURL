@@ -96,7 +96,193 @@ class CURL {
                 break;
         }
     }
-
+ 
+    /**
+     * CURLINFO_EFFECTIVE_URL 
+     * Last effective URL
+     * @return string
+     */
+    public function getEffectiveUrl() {
+        return $this->getInfo(CURLINFO_EFFECTIVE_URL);
+    }
+    
+    /**
+     * CURLINFO_HTTP_CODE 
+     * Last received HTTP code
+     * @return string
+     */
+    public function getHTTPCode() {
+        return $this->getInfo(CURLINFO_HTTP_CODE);
+    }
+    
+    /**
+     * CURLINFO_FILETIME 
+     * Remote time of the retrieved document, if -1 is returned the time of the 
+     * document is unknown
+     * @return string
+     */
+    public function getFileTime() {
+        return $this->getInfo(CURLINFO_FILETIME);
+    }
+    
+    /**
+     * CURLINFO_TOTAL_TIME 
+     * Total transaction time in seconds for last transfer
+     * @return string
+     */
+    public function getTotalTime() {
+        return $this->getInfo(CURLINFO_TOTAL_TIME);
+    }
+    
+    /**
+     * CURLINFO_NAMELOOKUP_TIME 
+     * Time in seconds until name resolving was complete
+     * @return string
+     */
+    public function getNameLookupTime() {
+        return $this->getInfo(CURLINFO_NAMELOOKUP_TIME);
+    }
+    
+    /**
+     * CURLINFO_CONNECT_TIME
+     * Time in seconds it took to establish the connection
+     * @return string
+     */
+    public function getConnectTime() {
+        return $this->getInfo(CURLINFO_CONNECT_TIME);
+    }
+    
+    /**
+     * CURLINFO_PRETRANSFER_TIME
+     * Time in seconds from start until just before file transfer begins
+     * @return string
+     */
+    public function getPreTransferTime() {
+        return $this->getInfo(CURLINFO_PRETRANSFER_TIME);
+    }
+    
+    /**
+     * CURLINFO_STARTTRANSFER_TIME
+     * Time in seconds until the first byte is about to be transferred
+     * @return string
+     */
+    public function getStartTransferTime() {
+        return $this->getInfo(CURLINFO_STARTTRANSFER_TIME);
+    }
+    
+    /**
+     * CURLINFO_REDIRECT_TIME
+     * Time in seconds of all redirection steps before final transaction was 
+     * started
+     * @return string
+     */
+    public function getRedirectTime() {
+        return $this->getInfo(CURLINFO_REDIRECT_TIME);
+    }
+    
+    /**
+     * CURLINFO_SIZE_UPLOAD
+     * Total number of bytes uploaded
+     * @return string
+     */
+    public function getSizeUpload() {
+        return $this->getInfo(CURLINFO_SIZE_UPLOAD);
+    }
+    
+    /**
+     * CURLINFO_SIZE_DOWNLOAD
+     * Total number of bytes downloaded
+     * @return string
+     */
+    public function getSizeDownload() {
+        return $this->getInfo(CURLINFO_SIZE_DOWNLOAD);
+    }
+    
+    
+    /**
+     * CURLINFO_SPEED_DOWNLOAD 
+     * Average download speed
+     * @return string
+     */
+    public function getSpeedDownload() {
+        return $this->getInfo(CURLINFO_SPEED_DOWNLOAD);
+    }
+    
+    /**
+     * CURLINFO_SPEED_UPLOAD
+     * Average upload speed
+     * @return string
+     */
+    public function getSpeedUpload() {
+        return $this->getInfo(CURLINFO_SPEED_UPLOAD);
+    }
+    
+    /**
+     * CURLINFO_HEADER_SIZE
+     * Total size of all headers received
+     * @return string
+     */
+    public function getHeaderSize() {
+        return $this->getInfo(CURLINFO_HEADER_SIZE);
+    }
+    
+    /**
+     * CURLINFO_HEADER_OUT
+     * The request string sent. For this to work, add the CURLINFO_HEADER_OUT 
+     * option to the handle by calling curl_setopt()
+     * @return string
+     */
+    public function getHeaderOut() {
+        return $this->getInfo(CURLINFO_HEADER_OUT);
+    }
+    
+    /**
+     * CURLINFO_REQUEST_SIZE
+     * Total size of issued requests, currently only for HTTP requests
+     * @return string
+     */
+    public function getRequestSize() {
+        return $this->getInfo(CURLINFO_REQUEST_SIZE);
+    }
+    
+    /**
+     * CURLINFO_SSL_VERIFYRESULT
+     * Result of SSL certification verification requested by setting 
+     * CURLOPT_SSL_VERIFYPEER
+     * @return string
+     */
+    public function getSSLVerifyResult() {
+        return $this->getInfo(CURLINFO_SSL_VERIFYRESULT);
+    }
+    
+    /**
+     * CURLINFO_CONTENT_LENGTH_DOWNLOAD 
+     * content-length of download, read from Content-Length: field
+     * @return string
+     */
+    public function getContentLengthDownload() {
+        return $this->getInfo(CURLINFO_CONTENT_LENGTH_DOWNLOAD);
+    }
+    
+    /**
+     * CURLINFO_CONTENT_LENGTH_UPLOAD 
+     * Specified size of upload
+     * @return string
+     */
+    public function getContentLengthUpload() {
+        return $this->getInfo(CURLINFO_CONTENT_LENGTH_UPLOAD);
+    }
+    
+    /**
+     * CURLINFO_CONTENT_TYPE 
+     * Content-Type: of the requested document, NULL indicates server did not 
+     * send valid Content-Type: header
+     * @return string
+     */
+    public function getContentType() {
+        return $this->getInfo(CURLINFO_CONTENT_TYPe);
+    }
+    
     /**
      * CURLOPT_AUTOREFERER
      * TRUE to automatically set the Referer: field in
