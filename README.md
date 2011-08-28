@@ -63,7 +63,7 @@ We can perform the same operation with PHP_CURL like so:
         ->setFile($fp)
         ->setHeader(0)
         ->execute()
-        ->close()
+        ->close();
 
     fclose($fp);
 
