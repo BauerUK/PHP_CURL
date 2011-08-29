@@ -1425,10 +1425,7 @@ class CURL {
      */
     public function setHttp200Aliases(array $value) {
         
-        // update our local copy if it has changed
-        if($this->http200Aliases !== $value) {
-            $this->http200Aliases = $value;
-        }
+        $this->http200Aliases = $value;
         
         return $this->setOption(CURLOPT_HTTP200ALIASES, $this->http200Aliases);
         
@@ -1457,10 +1454,7 @@ class CURL {
      */
     public function setHttpHeader(array $value) {
         
-        // update our local copy if it has changed
-        if($this->httpHeaders !== $value) {
-            $this->httpHeaders = $value;
-        }
+        $this->httpHeaders = $value;
         
         return $this->setOption(CURLOPT_HTTPHEADER, $this->httpHeaders);
         
@@ -1489,10 +1483,7 @@ class CURL {
      */
     public function setPostQuote(array $value) {
         
-        // update our local copy if it has changed
-        if($this->postQuotes !== $value) {
-            $this->postQuotes == $value;
-        }
+        $this->postQuotes = $value;
         
         return $this->setOption(CURLOPT_POSTQUOTE, $value);
         
@@ -1522,10 +1513,7 @@ class CURL {
      */
     public function setQuote(array $value) {
         
-        // update our local copy if it has changed
-        if($this->quotes !== $value) {
-            $this->quotes = $value;
-        }
+        $this->quotes = $value;
         
         return $This->setOption(CURLOPT_QUOTE, $value);
         
