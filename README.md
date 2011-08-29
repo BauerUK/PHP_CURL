@@ -93,3 +93,27 @@ it's working for me.
 
 I strongly encoruage any sort of feedback, patches or contributions. I'd be more
 than happy to open up this project to more developers if there is any demand.
+
+## FAQ
+
+**Q. Why `CURL::init()` instead of `new CURL()`?**
+
+A. If you want to take advantage of method-chaining, use `CURL::init`,
+since PHP's constructors don't allow for things like `(new Curl())->foo()`.
+
+However, if you prefer to instanciate an object and then use that object, 
+support for `$foo = new CURL()` is allowed. Both will work.
+
+**Q. Couldn't you have just done this with a single `__call()` wrapper, or use
+`__get()` and `__set()`?**
+
+This is true, however, a design decision was made to expand all the possible 
+functions to `get...` and `set...` functions individually. This means that it's 
+easier for a newcomer to the code to see clearly what methods are available. 
+Not to mention that editors with auto-completion ability aren't often clever 
+enough to discover magic method handling.
+
+At the end of the day, whether it's handled using PHPDoc paramters and magic
+methods, or all methods are out there in plain sight, it doesn't make a 
+difference either way, and I feel that if all methods are in plain sight, then
+there is little to no confusion as to what methods are available.
