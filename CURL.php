@@ -959,7 +959,7 @@ class CURL {
      * @return CURL
      */
     function setSSLVerifyHost($value) {
-        return $this->setOption(CURLOPT_SSH_VERIFYHOST, $value);
+        return $this->setOption(CURLOPT_SSL_VERIFYHOST, $value);
     }
 
     /**
