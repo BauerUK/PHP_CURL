@@ -280,7 +280,7 @@ class CURL {
      * @return string
      */
     public function getContentType() {
-        return $this->getInfo(CURLINFO_CONTENT_TYPe);
+        return $this->getInfo(CURLINFO_CONTENT_TYPE);
     }
     
     /**
