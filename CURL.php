@@ -1413,7 +1413,7 @@ class CURL {
 
         $this->http200Aliases[] = $alias;
 
-        return $this->setHttp200Aliases($http200Aliases);
+        return $this->setHttp200Aliases($this->http200Aliases);
 
     }
 
