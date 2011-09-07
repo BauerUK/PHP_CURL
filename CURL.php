@@ -1517,7 +1517,7 @@ class CURL {
 
         $this->quotes = $value;
 
-        return $This->setOption(CURLOPT_QUOTE, $value);
+        return $this->setOption(CURLOPT_QUOTE, $value);
 
     }
 
