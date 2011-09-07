@@ -36,8 +36,8 @@ class CURL {
 
     /**
      *
-     * @param type $opt
-     * @return type
+     * @param int $opt
+     * @return string|bool|array
      */
     public function getInfo($opt = NULL) {
         return curl_getinfo($this->curl_handler, $opt);
