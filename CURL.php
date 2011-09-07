@@ -1057,7 +1057,7 @@ class CURL {
     function setMaxSendSpeedLarge($value) {
         // TODO: check for this before setting, since it requires a later PHP
         // version
-        return $this->setOption(CURLOPT_SEND_SPEED_LARGE, $value);
+        return $this->setOption(CURLOPT_MAX_SEND_SPEED_LARGE, $value);
     }
 
     /**
