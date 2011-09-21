@@ -16,7 +16,7 @@
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * 
+ *
  * @param string Version
  * @param int ErrNo
  * @param string Error
@@ -27,7 +27,7 @@ class CURL {
     private $httpHeaders = array();
     private $postQuotes = array();
     private $quotes = array();
-    
+
     protected $curl_handler;
 
     public function __construct($url = null) {
@@ -36,8 +36,8 @@ class CURL {
 
     /**
      *
-     * @param type $opt
-     * @return type
+     * @param int $opt
+     * @return string|bool|array
      */
     public function getInfo($opt = NULL) {
         return curl_getinfo($this->curl_handler, $opt);
@@ -95,54 +95,56 @@ class CURL {
                 return curl_version();
                 break;
         }
+
+        throw new Exception("Unknown field '$name'!");
     }
- 
+
     /**
-     * CURLINFO_EFFECTIVE_URL 
+     * CURLINFO_EFFECTIVE_URL
      * Last effective URL
      * @return string
      */
     public function getEffectiveUrl() {
         return $this->getInfo(CURLINFO_EFFECTIVE_URL);
     }
-    
+
     /**
-     * CURLINFO_HTTP_CODE 
+     * CURLINFO_HTTP_CODE
      * Last received HTTP code
      * @return string
      */
     public function getHTTPCode() {
         return $this->getInfo(CURLINFO_HTTP_CODE);
     }
-    
+
     /**
-     * CURLINFO_FILETIME 
-     * Remote time of the retrieved document, if -1 is returned the time of the 
+     * CURLINFO_FILETIME
+     * Remote time of the retrieved document, if -1 is returned the time of the
      * document is unknown
      * @return string
      */
     public function getFileTime() {
         return $this->getInfo(CURLINFO_FILETIME);
     }
-    
+
     /**
-     * CURLINFO_TOTAL_TIME 
+     * CURLINFO_TOTAL_TIME
      * Total transaction time in seconds for last transfer
      * @return string
      */
     public function getTotalTime() {
         return $this->getInfo(CURLINFO_TOTAL_TIME);
     }
-    
+
     /**
-     * CURLINFO_NAMELOOKUP_TIME 
+     * CURLINFO_NAMELOOKUP_TIME
      * Time in seconds until name resolving was complete
      * @return string
      */
     public function getNameLookupTime() {
         return $this->getInfo(CURLINFO_NAMELOOKUP_TIME);
     }
-    
+
     /**
      * CURLINFO_CONNECT_TIME
      * Time in seconds it took to establish the connection
@@ -151,7 +153,7 @@ class CURL {
     public function getConnectTime() {
         return $this->getInfo(CURLINFO_CONNECT_TIME);
     }
-    
+
     /**
      * CURLINFO_PRETRANSFER_TIME
      * Time in seconds from start until just before file transfer begins
@@ -160,7 +162,7 @@ class CURL {
     public function getPreTransferTime() {
         return $this->getInfo(CURLINFO_PRETRANSFER_TIME);
     }
-    
+
     /**
      * CURLINFO_STARTTRANSFER_TIME
      * Time in seconds until the first byte is about to be transferred
@@ -169,17 +171,17 @@ class CURL {
     public function getStartTransferTime() {
         return $this->getInfo(CURLINFO_STARTTRANSFER_TIME);
     }
-    
+
     /**
      * CURLINFO_REDIRECT_TIME
-     * Time in seconds of all redirection steps before final transaction was 
+     * Time in seconds of all redirection steps before final transaction was
      * started
      * @return string
      */
     public function getRedirectTime() {
         return $this->getInfo(CURLINFO_REDIRECT_TIME);
     }
-    
+
     /**
      * CURLINFO_SIZE_UPLOAD
      * Total number of bytes uploaded
@@ -188,7 +190,7 @@ class CURL {
     public function getSizeUpload() {
         return $this->getInfo(CURLINFO_SIZE_UPLOAD);
     }
-    
+
     /**
      * CURLINFO_SIZE_DOWNLOAD
      * Total number of bytes downloaded
@@ -197,17 +199,17 @@ class CURL {
     public function getSizeDownload() {
         return $this->getInfo(CURLINFO_SIZE_DOWNLOAD);
     }
-    
-    
+
+
     /**
-     * CURLINFO_SPEED_DOWNLOAD 
+     * CURLINFO_SPEED_DOWNLOAD
      * Average download speed
      * @return string
      */
     public function getSpeedDownload() {
         return $this->getInfo(CURLINFO_SPEED_DOWNLOAD);
     }
-    
+
     /**
      * CURLINFO_SPEED_UPLOAD
      * Average upload speed
@@ -216,7 +218,7 @@ class CURL {
     public function getSpeedUpload() {
         return $this->getInfo(CURLINFO_SPEED_UPLOAD);
     }
-    
+
     /**
      * CURLINFO_HEADER_SIZE
      * Total size of all headers received
@@ -225,17 +227,17 @@ class CURL {
     public function getHeaderSize() {
         return $this->getInfo(CURLINFO_HEADER_SIZE);
     }
-    
+
     /**
      * CURLINFO_HEADER_OUT
-     * The request string sent. For this to work, add the CURLINFO_HEADER_OUT 
+     * The request string sent. For this to work, add the CURLINFO_HEADER_OUT
      * option to the handle by calling curl_setopt()
      * @return string
      */
     public function getHeaderOut() {
         return $this->getInfo(CURLINFO_HEADER_OUT);
     }
-    
+
     /**
      * CURLINFO_REQUEST_SIZE
      * Total size of issued requests, currently only for HTTP requests
@@ -244,45 +246,45 @@ class CURL {
     public function getRequestSize() {
         return $this->getInfo(CURLINFO_REQUEST_SIZE);
     }
-    
+
     /**
      * CURLINFO_SSL_VERIFYRESULT
-     * Result of SSL certification verification requested by setting 
+     * Result of SSL certification verification requested by setting
      * CURLOPT_SSL_VERIFYPEER
      * @return string
      */
     public function getSSLVerifyResult() {
         return $this->getInfo(CURLINFO_SSL_VERIFYRESULT);
     }
-    
+
     /**
-     * CURLINFO_CONTENT_LENGTH_DOWNLOAD 
+     * CURLINFO_CONTENT_LENGTH_DOWNLOAD
      * content-length of download, read from Content-Length: field
      * @return string
      */
     public function getContentLengthDownload() {
         return $this->getInfo(CURLINFO_CONTENT_LENGTH_DOWNLOAD);
     }
-    
+
     /**
-     * CURLINFO_CONTENT_LENGTH_UPLOAD 
+     * CURLINFO_CONTENT_LENGTH_UPLOAD
      * Specified size of upload
      * @return string
      */
     public function getContentLengthUpload() {
         return $this->getInfo(CURLINFO_CONTENT_LENGTH_UPLOAD);
     }
-    
+
     /**
-     * CURLINFO_CONTENT_TYPE 
-     * Content-Type: of the requested document, NULL indicates server did not 
+     * CURLINFO_CONTENT_TYPE
+     * Content-Type: of the requested document, NULL indicates server did not
      * send valid Content-Type: header
      * @return string
      */
     public function getContentType() {
-        return $this->getInfo(CURLINFO_CONTENT_TYPe);
+        return $this->getInfo(CURLINFO_CONTENT_TYPE);
     }
-    
+
     /**
      * CURLOPT_AUTOREFERER
      * TRUE to automatically set the Referer: field in
@@ -421,8 +423,8 @@ class CURL {
      * @param boolean $value
      * @return CURL
      */
-    public function setFtpUseERPT($value) {
-        return $this->setOption(CURLOPT_FTP_USE_ERPT, $value);
+    public function setFtpUseEPRT($value) {
+        return $this->setOption(CURLOPT_FTP_USE_EPRT, $value);
     }
 
     /**
@@ -957,7 +959,7 @@ class CURL {
      * @return CURL
      */
     function setSSLVerifyHost($value) {
-        return $this->setOption(CURLOPT_SSH_VERIFYHOST, $value);
+        return $this->setOption(CURLOPT_SSL_VERIFYHOST, $value);
     }
 
     /**
@@ -1055,7 +1057,7 @@ class CURL {
     function setMaxSendSpeedLarge($value) {
         // TODO: check for this before setting, since it requires a later PHP
         // version
-        return $this->setOption(CURLOPT_SEND_SPEED_LARGE, $value);
+        return $this->setOption(CURLOPT_MAX_SEND_SPEED_LARGE, $value);
     }
 
     /**
@@ -1404,17 +1406,17 @@ class CURL {
      * Add a single HTTP 200 alias.
      * HTTP 200 response that will be treated as valid responses
      * and not as errors.
-     * @param string $alias 
+     * @param string $alias
      * @return CURL
      */
     public function addHttp200Alias($alias) {
-        
+
         $this->http200Aliases[] = $alias;
-        
-        return $this->setHttp200Aliases($http200Aliases);
-        
+
+        return $this->setHttp200Aliases($this->http200Aliases);
+
     }
-    
+
     /**
      * CURLOPT_HTTP200ALIASES
      * An array of HTTP 200 responses that will be treated as valid responses
@@ -1424,11 +1426,11 @@ class CURL {
      * @return CURL
      */
     public function setHttp200Aliases(array $value) {
-        
+
         $this->http200Aliases = $value;
-        
+
         return $this->setOption(CURLOPT_HTTP200ALIASES, $this->http200Aliases);
-        
+
     }
 
     /**
@@ -1438,13 +1440,13 @@ class CURL {
      * @return CURL
      */
     public function addHttpHeader($key, $value) {
-        
+
         $this->httpHeaders[] = sprintf("%s: %s", $key, $value);
-        
+
         return $this->setHttpHeader($this->httpHeaders);
-        
+
     }
-    
+
     /**
      * CURLOPT_HTTPHEADER
      * An array of HTTP header fields to set, in the format
@@ -1453,11 +1455,11 @@ class CURL {
      * @return CURL
      */
     public function setHttpHeader(array $value) {
-        
+
         $this->httpHeaders = $value;
-        
+
         return $this->setOption(CURLOPT_HTTPHEADER, $this->httpHeaders);
-        
+
     }
 
     /**
@@ -1467,13 +1469,13 @@ class CURL {
      * @return CURL
      */
     public function addPostQuote($command) {
-        
+
         $this->postQuotes[] = $command;
-        
+
         return $this->setPostQuote($this->postQuotes);
-        
+
     }
-    
+
     /**
      * CURLOPT_POSTQUOTE
      * An array of FTP commands to execute on the server after the FTP request
@@ -1482,14 +1484,14 @@ class CURL {
      * @return CURL
      */
     public function setPostQuote(array $value) {
-        
+
         $this->postQuotes = $value;
-        
+
         return $this->setOption(CURLOPT_POSTQUOTE, $value);
-        
+
     }
 
-    
+
     /**
      * Add a single FTP commands to execute on the server prior to the FTP
      * request.
@@ -1497,13 +1499,13 @@ class CURL {
      * @return CURL
      */
     public function addQuote($command) {
-        
+
         $this->quotes[] = $command;
-        
+
         return $this->setQuote($this->quotes);
-        
+
     }
-    
+
     /**
      * CURLOPT_QUOTE
      * An array of FTP commands to execute on the server prior to the FTP
@@ -1512,11 +1514,11 @@ class CURL {
      * @return CURL
      */
     public function setQuote(array $value) {
-        
+
         $this->quotes = $value;
-        
-        return $This->setOption(CURLOPT_QUOTE, $value);
-        
+
+        return $this->setOption(CURLOPT_QUOTE, $value);
+
     }
 
     /**
